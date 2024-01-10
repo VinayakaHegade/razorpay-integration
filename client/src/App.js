@@ -1,11 +1,10 @@
 import "./App.css";
+import Pricing from "./Pricing";
 
 function App() {
-  const amount = 500;
+  const amount = 500*100;
   const currency = "INR";
   const receiptId = "qwsaq1";
-
-  console.log(process.env.REACT_APP_RAZORPAY_KEY_ID);
 
   const paymentHandler = async (e) => {
     const response = await fetch("http://localhost:5001/order", {
@@ -29,7 +28,7 @@ function App() {
       name: "Acme Corp", //your business name
       description: "Test Transaction",
       image: "https://example.com/your_logo",
-      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      order_id: order.id, //Pass the `id` obtained in the response of Step 1
       handler: async function (response) {
         const body = {
           ...response,
@@ -72,7 +71,8 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Razorpay Integration</h1>
+      <h1>Razorpay Integration with React and NodeJs</h1>
+      <Pricing/>
       <button onClick={paymentHandler}>Pay</button>
     </div>
   );
