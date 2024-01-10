@@ -13,7 +13,6 @@ const PricingCard = ({ content, selectMonthly, paymentHandler }) => {
 
   const price = calculatePrice(content.price);
   const subscriptionPeriod = calculatePeriod();
-  const buttonText = content.title === "Teams" ? "Contact us" : "Buy plan";
 
   return (
     <div className="pricing-card">
@@ -27,7 +26,7 @@ const PricingCard = ({ content, selectMonthly, paymentHandler }) => {
         <span>{subscriptionPeriod}</span>
       </h1>
       <button onClick={(e) => paymentHandler(e, content.currency, price * 100)}>
-        {buttonText}
+        Buy plan
       </button>
       <ul>
         {content.features.map((feature, index) => (
