@@ -1,8 +1,8 @@
 export const pricingCardsContent = [
   {
-    title: "Hobby",
+    title: "Basic",
     tagline: "Empower your projects with essential tools, at no cost.",
-    price: "Free Plan",
+    price: 400,
     features: [
       "Fortune 500 company logo",
       "5000 API calls per month",
@@ -15,8 +15,7 @@ export const pricingCardsContent = [
     title: "Pro",
     tagline:
       "Elevate your business to new heights with our comprehensive service.",
-    price: "₹1600",
-    period: true,
+    price: 1600,
     features: [
       "Fortune 500 company logo + private images",
       "15000 API calls per month",
@@ -30,7 +29,7 @@ export const pricingCardsContent = [
     title: "Teams",
     tagline:
       "Experience limitless advantages and detailed reporting for your squad.",
-    price: "Custom Pricing",
+    price: 3200,
     features: [
       "Fortune 500 company logo + unlimited private logos",
       "Unlimited API calls per month",

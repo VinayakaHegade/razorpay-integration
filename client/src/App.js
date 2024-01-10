@@ -71,7 +71,6 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Razorpay Integration with React and NodeJs</h1>
       <Pricing/>
       <button onClick={paymentHandler}>Pay</button>
     </div>

@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 const PricingCard = ({ content, selectMonthly }) => {
   // Function to calculate price based on the selected pricing period
   const calculatePrice = (price) => {
-    return selectMonthly ? price : `${price * 12}`;
+    return selectMonthly ? price : price * 12;
   };
 
   // Function to calculate period based on the selected pricing period
-  const calculatePeriod = (period) => {
-    return period ? (selectMonthly ? "/month" : "/year") : null;
+  const calculatePeriod = () => {
+    return selectMonthly ? "/month" : "/year";
   };
 
-  const price = content.period ? calculatePrice(content.price) : content.price;
+  const price = calculatePrice(content.price);
+  const subscriptionPeriod = calculatePeriod();
   const buttonText = content.title === "Teams" ? "Contact us" : "Buy plan";
 
   return (
@@ -22,8 +23,8 @@ const PricingCard = ({ content, selectMonthly }) => {
       </div>
       <p>{content.tagline}</p>
       <h1>
-        <span>{price}</span>
-        {content.period && <span>{calculatePeriod(content.period)}</span>}
+        <span>₹{price}</span>
+        <span>{subscriptionPeriod}</span>
       </h1>
       <button>{buttonText}</button>
       <ul>
@@ -42,8 +43,7 @@ PricingCard.propTypes = {
   content: PropTypes.shape({
     title: PropTypes.string.isRequired,
     tagline: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    period: PropTypes.bool,
+    price: PropTypes.number.isRequired,
     features: PropTypes.array.isRequired,
     label: PropTypes.string,
   }).isRequired,
