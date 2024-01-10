@@ -2,11 +2,9 @@ import "./App.css";
 import Pricing from "./Pricing";
 
 function App() {
-  const amount = 500*100;
-  const currency = "INR";
   const receiptId = "qwsaq1";
 
-  const paymentHandler = async (e) => {
+  const paymentHandler = async (e, currency, amount) => {
     const response = await fetch("http://localhost:5001/order", {
       method: "POST",
       body: JSON.stringify({
@@ -19,7 +17,6 @@ function App() {
       },
     });
     const order = await response.json();
-    console.log(order);
 
     var options = {
       key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
@@ -45,7 +42,7 @@ function App() {
           }
         );
         const jsonRes = await validateRes.json();
-        console.log(jsonRes);
+        if (jsonRes) console.log("payment successfull");
       },
       prefill: {
         //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
@@ -68,11 +65,9 @@ function App() {
     e.preventDefault();
   };
 
-
   return (
     <div className="app">
-      <Pricing/>
-      <button onClick={paymentHandler}>Pay</button>
+      <Pricing paymentHandler={paymentHandler} />
     </div>
   );
 }

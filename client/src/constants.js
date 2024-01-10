@@ -2,6 +2,7 @@ export const pricingCardsContent = [
   {
     title: "Basic",
     tagline: "Empower your projects with essential tools, at no cost.",
+    currency: "INR",
     price: 400,
     features: [
       "Fortune 500 company logo",
@@ -15,6 +16,7 @@ export const pricingCardsContent = [
     title: "Pro",
     tagline:
       "Elevate your business to new heights with our comprehensive service.",
+    currency: "INR",
     price: 1600,
     features: [
       "Fortune 500 company logo + private images",
@@ -29,6 +31,7 @@ export const pricingCardsContent = [
     title: "Teams",
     tagline:
       "Experience limitless advantages and detailed reporting for your squad.",
+    currency: "INR",
     price: 3200,
     features: [
       "Fortune 500 company logo + unlimited private logos",

@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import PricingCard from "./PricingCard";
 import { pricingCardsContent } from "./constants";
 
-const Pricing = () => {
+const Pricing = ({ paymentHandler }) => {
   const [selectMonthly, setSelectMonthly] = useState(true);
 
   const handleSwitchChange = () => {
@@ -40,11 +41,16 @@ const Pricing = () => {
             key={index}
             content={cardContent}
             selectMonthly={selectMonthly}
+            paymentHandler={paymentHandler}
           />
         ))}
       </div>
     </div>
   );
+};
+
+Pricing.propTypes = {
+  paymentHandler: PropTypes.func.isRequired,
 };
 
 export default Pricing;

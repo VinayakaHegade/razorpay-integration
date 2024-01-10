@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const PricingCard = ({ content, selectMonthly }) => {
+const PricingCard = ({ content, selectMonthly, paymentHandler }) => {
   // Function to calculate price based on the selected pricing period
   const calculatePrice = (price) => {
     return selectMonthly ? price : price * 12;
@@ -26,7 +26,9 @@ const PricingCard = ({ content, selectMonthly }) => {
         <span>₹{price}</span>
         <span>{subscriptionPeriod}</span>
       </h1>
-      <button>{buttonText}</button>
+      <button onClick={(e) => paymentHandler(e, content.currency, price * 100)}>
+        {buttonText}
+      </button>
       <ul>
         {content.features.map((feature, index) => (
           <li key={index}>
@@ -40,9 +42,11 @@ const PricingCard = ({ content, selectMonthly }) => {
 };
 
 PricingCard.propTypes = {
+  paymentHandler: PropTypes.func.isRequired,
   content: PropTypes.shape({
     title: PropTypes.string.isRequired,
     tagline: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     features: PropTypes.array.isRequired,
     label: PropTypes.string,
