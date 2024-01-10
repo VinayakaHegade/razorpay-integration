@@ -1,0 +1,13 @@
+.app {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+button {
+  width: 100px;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
